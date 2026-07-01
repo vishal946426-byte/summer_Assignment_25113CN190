@@ -1,41 +1,43 @@
 #include <iostream>
-#include <vector>
+#include <iomanip>
 using namespace std;
-
-struct Employee
-{
-    int id;
-    string name;
-    double basic, hra, da, total;
-};
 
 int main()
 {
-    int n;
-    cin >> n;
+    string name;
+    int roll;
+    float m1, m2, m3, m4, m5;
 
-    vector<Employee> emp(n);
+    cout << " enter name: ";
+    getline(cin, name);
 
-    for (int i = 0; i < n; i++)
-    {
-        cin >> emp[i].id;
-        cin >> emp[i].name;
-        cin >> emp[i].basic;
+    cout << " enter roll no:";
+    cin >> roll;
+    cout << " enter marks of 5 subjects:\n";
+    cin >> m1, m2, m3, m4, m5;
 
-        emp[i].hra = emp[i].basic * 0.20;
-        emp[i].da = emp[i].basic * 0.10;
-        emp[i].total =
-            emp[i].basic +
-            emp[i].hra +
-            emp[i].da;
-    }
+    float total = m1 + m2 + m3 + m4 + m5;
+    float percentage = total / 5;
 
-    cout << "\nSalary Details\n";
+    char grade;
 
-    for (auto e : emp)
-    {
-        cout << e.id << " " << e.name << " " << e.total << " " << endl;
-    }
+    if (percentage >= 90)
+        grade = 'A';
+    else if (percentage >= 75)
+        grade = 'B';
+    else if (percentage >= 60)
+        grade = 'C';
+    else if (percentage)
+        grade = 'D';
+    else
+        grade = 'F';
+
+    cout << "\n----------MARKSHEET-----------\n";
+    cout << " name      :" << name << endl;
+    cout << " roll no   :" << roll << endl;
+    cout << " total   :" << total << endl;
+    cout << " percentage   :" << fixed << setprecision(2) << "%" << endl;
+    cout << " grade      :" << grade << endl;
 
     return 0;
 }
